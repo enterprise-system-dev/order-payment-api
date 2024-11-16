@@ -43,7 +43,7 @@ mongoose.connect('mongodb://localhost:27017/eadp', {
     .catch(error => console.log('MongoDB connection error:', error));
 
 // Routes
-app.use('/api/v1', OrderRoute);
+app.use('order-payment-service/api/v1', OrderRoute);
 
 // Eureka client start
 client.start((error) => {
