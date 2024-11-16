@@ -1,0 +1,41 @@
+# This workflow will set up a Node.js environment, install dependencies, and start your application.
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    # Check out the repository containing your Node.js project
+    - uses: actions/checkout@v4
+    
+    # Set up Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16' # Specify the Node.js version you want to use
+        cache: 'npm'
+    
+    # Install project dependencies
+    - name: Install Dependencies
+      run: npm install
+    
+    # Run tests (optional step)
+    - name: Run Tests
+      run: npm test
+    
+    # Build your project (optional, if your project has a build step)
+    - name: Build Project
+      run: npm run build
+    
+    # Start the Node.js application
+    - name: Execute Node.js App
+      run: |
+        sudo kill -9 $(sudo lsof -t -i:3000) || true
+        sudo node /root/eadp/order-payment/actions-runner/_work/your-node-project/ &
