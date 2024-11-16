@@ -27,10 +27,6 @@ jobs:
       run: npm install
     
     
-    # Build your project (optional, if your project has a build step)
-    - name: Build Project
-      run: npm run build
-    
     # Start the Node.js application
     - name: Execute Node.js App
       run: |
