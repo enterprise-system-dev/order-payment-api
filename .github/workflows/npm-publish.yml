@@ -31,4 +31,4 @@ jobs:
     - name: Execute Node.js App
       run: |
         sudo kill -9 $(sudo lsof -t -i:3000) || true
-        sudo node /root/eadp/order-payment/actions-runner/_work/your-node-project/ &
+        sudo node /root/eadp/order-payment/actions-runner/_work/order-payment-api/order-payment-api/index.js &
